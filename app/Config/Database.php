@@ -30,7 +30,7 @@ class Database extends Config
      *
      * @var array
      */
-    public $default = [
+    /*public $default = [
         'DSN'      => '',
         'hostname' => '217.21.91.103',
         'username' => 'u501213971_sketchers',
@@ -48,7 +48,27 @@ class Database extends Config
         'strictOn' => false,
         'failover' => [],
         'port'     => 3306,
+    ];*/
+    public $default = [
+        'DSN'      => '',
+        'hostname' => '104.248.166.108',
+        'username' => 'ceqqkybrph',
+        'password' => 'ygnwuT3WQ3',
+        'database' => 'ceqqkybrph',
+        'DBDriver' => 'MySQLi',
+        'DBPrefix' => '',
+        'pConnect' => false,
+        'DBDebug'  => (ENVIRONMENT !== 'production'),
+        'charset'  => 'utf8',
+        'DBCollat' => 'utf8_general_ci',
+        'swapPre'  => '',
+        'encrypt'  => false,
+        'compress' => false,
+        'strictOn' => false,
+        'failover' => [],
+        'port'     => 3306,
     ];
+    
 
     /**
      * This database connection is used when

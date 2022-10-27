@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
 		var id = $(this).attr('data-id');
 		var contactno = $(this).attr('data-contactno');
 
-		$.ajax({url: "/add_attendance?id="+id, 
+		$.ajax({url: "/sketcher/main/public/add_attendance?id="+id, 
 				success: function(result) {
 					$('#mark_attendance').css('display', "none");
 					$('#remove_attendance').css('display', 'block');
@@ -50,7 +50,7 @@ jQuery(document).ready(function($) {
 		var id = $(this).attr('data-id');
 		var contactno = $(this).attr('data-contactno');
 
-		$.ajax({url: "/remove_attendance?id="+id, 
+		$.ajax({url: "/sketcher/main/public/remove_attendance?id="+id, 
 				success: function(result) {
 					$('#mark_attendance').css('display', "block");
 

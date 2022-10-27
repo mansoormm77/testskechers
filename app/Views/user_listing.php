@@ -30,7 +30,7 @@
                             <button onclick="location.href='<?php echo base_url('user/create');?>'" class="btn btn-primary" type="button">Add User</button>
     
                             </div>
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>

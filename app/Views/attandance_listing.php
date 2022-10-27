@@ -29,7 +29,7 @@
                             <div class="card-header">
    
                             </div>
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>

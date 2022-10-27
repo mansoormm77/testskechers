@@ -41,7 +41,7 @@ class AttendanceModel extends Model {
     }
     function getTodayAttendance()
     {
-        $now = Time::now('UTC');
+        $now = Time::now('Asia/Kolkata');
 
         $this->where('attendance_on', $now->toDateString());
         $result = $this->get()->getResultArray();

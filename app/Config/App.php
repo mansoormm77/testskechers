@@ -23,7 +23,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost:8081/';
+    public $baseURL = 'https://phpstack-864918-2990411.cloudwaysapps.com/sketcher/main/public/';
 
     /**
      * --------------------------------------------------------------------------
@@ -108,7 +108,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $appTimezone = 'America/Chicago';
+    public $appTimezone = 'Asia/Kolkata';
 
     /**
      * --------------------------------------------------------------------------

@@ -40,7 +40,7 @@ class AttendanceController extends BaseController
     {
         $data = array();
         $session = session();
-        $now = Time::now('UTC');
+        $now = Time::now('Asia/Kolkata');
         if($_GET['id']){
             $attendance_data = new AttendanceModel();
             $data1 = array(
@@ -58,7 +58,7 @@ class AttendanceController extends BaseController
     {
         $data = array();
         $session = session();
-        $now = Time::now('UTC');
+        $now = Time::now('Asia/Kolkata');
         if($_GET['id']){
             $attendance_data = new AttendanceModel();
            
@@ -71,7 +71,7 @@ class AttendanceController extends BaseController
     {
         $data = array();
         $session = session();
-        $now = Time::now('UTC');
+        $now = Time::now('Asia/Kolkata');
         $attendance_data = new AttendanceModel();
         $today = $attendance_data->getTodayAttendance();
         if($today){

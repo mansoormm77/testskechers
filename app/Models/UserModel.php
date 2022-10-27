@@ -41,7 +41,7 @@ class UserModel extends Model {
     }
     function getTodayUsers($ids)
     {
-        $this->where('id', 4);
+        $this->whereIn('id', $ids);
         $result = $this->get()->getResult();
         if(count($result)>0){
             return $result;
