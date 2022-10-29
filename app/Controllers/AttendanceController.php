@@ -14,7 +14,8 @@ class AttendanceController extends BaseController
     public function index()
     {
         $data = array();
-        if($_GET['phone']){
+        $data['qr_fail'] = false;
+        if($_GET['phone'] != ''){
             $userModel = new UserModel();
             $data['user_profile'] = $userModel->userProfileByPhone($_GET['phone']);
             $attendance_data = new AttendanceModel();
@@ -29,6 +30,43 @@ class AttendanceController extends BaseController
         }else{
             $data['attendace_mark'] = 0;
         }
+        }elseif($_GET['id'] != ''){
+            $userModel = new UserModel();
+
+            // Store the cipher method
+            $ciphering = "AES-128-CTR";
+            $options = 0;
+
+            // Non-NULL Initialization Vector for decryption
+            $decryption_iv = '1234567891011121';
+            
+            // Store the decryption key
+            $decryption_key = "SketchersAttendanceString";
+            
+            // Use openssl_decrypt() function to decrypt the data
+            $id=openssl_decrypt ($_GET['id'], $ciphering,
+                    $decryption_key, $options, $decryption_iv);
+                    
+                $data['user_profile'] = $userModel->userProfile($id);
+                if($data['user_profile']){
+                    $attendance_data = new AttendanceModel();
+                        $today = $attendance_data->getTodayAttendance();
+                        
+                        if($today){
+                        if(in_array($data['user_profile'][0]->id,$today)){
+                            $data['attendace_mark'] = 1;
+                        }else{
+                            $data['attendace_mark'] = 0;
+                        }
+                    }else{
+                        $data['attendace_mark'] = 0;
+                    }
+                }else{
+                    $data['user_profile'] = null;
+                    $data['qr_fail'] = true;
+
+                }
+              
         }else{
             $data['user_profile'] = null;
         }

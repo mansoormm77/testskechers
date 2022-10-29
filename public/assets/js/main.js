@@ -57,4 +57,26 @@ jQuery(document).ready(function($) {
 					$('#remove_attendance').css('display', "none");
 		}});
 	});
+	
+	let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+	  scanner.addListener('scan', function (content) {
+		console.log(content);
+		document.getElementById("nf-id").value = content;
+		document.getElementById('attendance_form').submit();
+	  });
+		 $('#start_scan').click(function(e){
+			   e.preventDefault();
+			   Instascan.Camera.getCameras().then(function (cameras) {
+				   if (cameras.length > 0) {
+					 scanner.start(cameras[1]);
+					 $('#preview').css('display','block');
+				   } else {
+					   $('#preview').css('display','none');
+					 console.error('No cameras found.');
+				   }
+				 }).catch(function (e) {
+					$('#preview').css('display','none');
+				   console.error(e);
+				 });
+		   });
 });

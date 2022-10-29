@@ -1,6 +1,6 @@
 <?= $this->include('header') ?>
 
-<form action="<?php echo base_url('attendance');?>" method="get" class="">
+<form action="<?php echo base_url('attendance');?>" method="get" class="" id="attendance_form">
 
 <div class="card">
     <div class="card-header">
@@ -10,10 +10,10 @@
             <div class="form-group col-md-4">
                 <label for="nf-password" class=" form-control-label">Phone Number Of User</label>
                 <input type="tell" id="nf-phone" name="phone" placeholder="Enter Phone Number" value="<?php if($user_profile){ echo $user_profile[0]->contactno;}?>" class="form-control">
+                <input type="hidden" id="nf-id" name="id" value="" class="form-control">
             </div>
     </div>  
-
-       
+ 
     </div>
     <div class="card-footer">
         <button type="submit" class="btn btn-primary btn-sm">
@@ -22,14 +22,45 @@
 
     </div>
     </form>
-
-
+    
+    <!--
+    <?php if(!$user_profile && !$qr_fail){ ?>
+    <div class="card">
+    <div class="card-header">
+        Scan
+    </div>
+    <div class="card-body card-block">
+           <button id="start_scan" class="btn btn-primary" type="button">Scan</button>
+           <video id="preview" style="display:none;"></video>
+    </div>  
+    
+    </div>
+  
+    
+    
+    
+       <?php } ?>
+       <?php if($qr_fail){ ?>
+      <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+          <span class="badge badge-pill badge-danger">User Not Found</span>
+          Please re-scan the QR Code.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+              </button>
+      </div>
+       <button id="start_scan" class="btn btn-primary" type="button">Re-Scan</button>
+       <video id="preview" style="display:none;"></video>
+      
+          <?php } ?>
+          
+      -->
 <?php if($user_profile){ ?>
 <div class="row">
     <div class="col-md-4">
     <div class="card">
                             <div class="card-header" style="display: flex;align-items: baseline;">
-                                <i class="fa fa-user"></i><strong class="card-title pl-2">User Profile</strong>
+                                <i class="fa fa-user"></i><strong class="card-title pl-2">User Profile</strong><br>
+                                <button onclick="location.href='<?php echo base_url('attendance');?>'" style="margin-right: auto;margin-left: auto;" class="btn btn-primary" type="button">Reset</button>
                             </div>
                             <div class="card-body">
                                 <div class="mx-auto d-block">

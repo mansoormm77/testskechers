@@ -11,7 +11,7 @@ class UserController extends BaseController
     public function index()
     {
         $userModel = new UserModel();
-        $data['coaches'] = $userModel->userProfile(1);
+        $data['coaches'] = $userModel->getAllUser();
        // print_r($data['coaches']);
         return view('user_listing',$data);
     }
@@ -29,6 +29,14 @@ class UserController extends BaseController
             'name'          => 'required|min_length[2]|max_length[50]',
             'email'         => 'required|min_length[4]|max_length[100]|valid_email|is_unique[user_details.email]',
             'password'      => 'required|min_length[4]|max_length[50]',
+            'usertype'      => 'required',
+            'phone'      => 'required',
+            'gender'      => 'required',
+            'dob'      => 'required',
+            'state'      => 'required',
+            'city'      => 'required',
+            'pincode'      => 'required',
+            'club'      => 'required',
         ];
           $data=array();
         if($this->validate($rules)){

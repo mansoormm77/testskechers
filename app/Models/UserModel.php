@@ -18,7 +18,7 @@ class UserModel extends Model {
 
     function userProfile($id)
     {
-        //$this->where('id', $id);
+        $this->where('id', $id);
         $result = $this->get()->getResult();
         if(count($result)>0){
             return $result;
@@ -26,6 +26,17 @@ class UserModel extends Model {
             return false;
         }
 
+    }
+function getAllUser()
+    {
+        //$this->where('id', $id);
+        $result = $this->get()->getResult();
+        if(count($result)>0){
+            return $result;
+        } else {
+            return false;
+        }
+    
     }
 
     function userProfileByPhone($phone)
