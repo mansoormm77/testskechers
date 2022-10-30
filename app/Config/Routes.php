@@ -35,6 +35,8 @@ $routes->get('/', 'index::index');
 $routes->get('/user/listing/', 'UserController::index');
 $routes->get('/user/create/', 'UserController::addView');
 $routes->post('/user/store/', 'UserController::store');
+$routes->post('/user/update/', 'UserController::update');
+$routes->get('/user/edit/:num', 'UserController::editView');
 
 $routes->get('/attendance', 'AttendanceController::index');
 $routes->get('/add_attendance', 'AttendanceController::addAttendance');

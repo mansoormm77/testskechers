@@ -38,6 +38,7 @@
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>User Type</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,6 +50,10 @@
                                                 <td><?php echo $coach->email; ?></td>
                                                 <td><?php echo $coach->contactno; ?></td>
                                                 <td><?php if($coach->user_role == 1){ echo "Super Admin"; }elseif($coach->user_role == 2){ echo "Admin"; }elseif($coach->user_role == 3){ echo "Coach"; }elseif($coach->user_role == 4){ echo "Customer"; }?></td>
+                                                <td><a href="<?php echo base_url('user/edit/'.$coach->id); ?>" class="edit_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button">
+                                                        <i class="fa fa-edit"></i>
+                                                        <span class="ui-button-text">&nbsp;Edit</span>
+                                                    </a></td>
                                             </tr>
                                             <?php }
                                             endif; ?>

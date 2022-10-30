@@ -40,4 +40,20 @@ class Validation
     //--------------------------------------------------------------------
     // Rules
     //--------------------------------------------------------------------
+    
+    public function _unique_email($email) {
+    
+        if ($email == $this->old_email) {
+            return true;
+        }
+    
+        if ($this->UserModel->email_exists($email)) {
+    
+            $this->form_validation->set_message('_unique_email', $this->lang->line('non_unique_email'));
+    
+            return false;
+        }
+    
+        return true;
+    }
 }
