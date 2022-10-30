@@ -8,7 +8,7 @@ use CodeIgniter\Model;
 class AttendanceModel extends Model {
     protected $table = 'members_attendance';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['user_id', 'admin_id','attendance_on','added_by','status'];
+    protected $allowedFields = ['user_id', 'admin_id','attendance_on','added_by','status','club_id'];
     protected $returnType = 'array';
     function __construct()
     {

@@ -125,12 +125,15 @@ echo '
             </div>
             <div class="form-group col-md-4">
                 <label for="nf-password" class=" form-control-label">Select Club</label>
-                <select name="club" id="club" class="form-control">
-                    <option value="">Please select</option>
-                    <option value="1">A</option>
-                    <option value="2">B</option>
-                    <option value="3">C</option>
-                </select>
+               <select name="club" id="club" class="form-control">
+                   <option value="">Please select</option>
+               
+                   <?php foreach($clubs as $club){?>
+                       <option value="<?php echo $club->id;?>"><?php echo $club->club_name;?></option>
+               
+                   <?php } ?>
+                  
+               </select>
             
             </div>
         </div>  

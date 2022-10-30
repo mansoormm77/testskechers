@@ -56,7 +56,7 @@
       -->
 <?php if($user_profile){ ?>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
     <div class="card">
                             <div class="card-header" style="display: flex;align-items: baseline;">
                                 <i class="fa fa-user"></i><strong class="card-title pl-2">User Profile</strong><br>
@@ -74,6 +74,21 @@
                                 </div>
                                 <hr>
                                 <div class="card-text text-sm-center">
+                                <div class="form-group" style="<?php if($attendace_mark == 1){ echo 'display:none;'; }else{ echo 'display:block;';}?>" id="club_field">
+                                    <label for="nf-password" class=" form-control-label">Select Club</label>
+                                    <select name="club" id="club" class="form-control">
+                                        <option value="">Please select</option>
+
+                                        <?php foreach($clubs as $club){?>
+                                            <option value="<?php echo $club->id;?>"><?php echo $club->club_name;?></option>
+
+                                        <?php } ?>
+                                       
+                                    </select>
+                                    <div class="invalid-feedback" id="error-club">
+                                      Please provide a valid Club.
+                                    </div>
+                                </div>
                                 <button type="button" style="<?php if($attendace_mark == 1){ echo 'display:none;'; }else{ echo 'display:block;';}?>" id="mark_attendance" data-id="<?php print_r(ucfirst($user_profile[0]->id));?>"  data-contactno="<?php print_r(ucfirst($user_profile[0]->contactno));?>" class="btn btn-success btn-lg btn-block">Mark Attendance</button>
                                 <button type="button" style="<?php if($attendace_mark == 0){ echo 'display:none;'; }else{ echo 'display:block;';}?>" id="remove_attendance" data-id="<?php print_r(ucfirst($user_profile[0]->id));?>" class="btn btn-danger btn-lg btn-block">Remove Attendance</button>
 

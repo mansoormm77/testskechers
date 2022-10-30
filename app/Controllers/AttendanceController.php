@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\AttendanceModel;
+use App\Models\ClubModel;
+
 use CodeIgniter\API\ResponseTrait;
 use Zxing\QrReader;
 use CodeIgniter\I18n\Time;
@@ -14,6 +16,8 @@ class AttendanceController extends BaseController
     public function index()
     {
         $data = array();
+        $club_model = new ClubModel();
+        $data['clubs'] = $club_model->getAllClubs();
         $data['qr_fail'] = false;
         if($_GET['phone'] != ''){
             $userModel = new UserModel();
@@ -84,7 +88,8 @@ class AttendanceController extends BaseController
             $data1 = array(
                 "user_id" => $_GET['id'],
                 "admin_id" => 1,
-                "status" => 1,  
+                "status" => 1,
+                "club_id" => $_GET['club_id'],  
                 "attendance_on" => $now->toDateTimeString()
             );
             $result = $attendance_data->insert($data1);

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\UserModel;
 use CodeIgniter\I18n\Time;
+use App\Models\ClubModel;
 
 class UserController extends BaseController
 {
@@ -11,6 +12,7 @@ class UserController extends BaseController
     public function index()
     {
         $userModel = new UserModel();
+        
         $data['coaches'] = $userModel->getAllUser();
        // print_r($data['coaches']);
         return view('user_listing',$data);
@@ -18,8 +20,10 @@ class UserController extends BaseController
 
     public function addView()
     {
-        
-        return view('user_create');
+        $data = array();
+        $club_model = new ClubModel();
+        $data['clubs'] = $club_model->getAllClubs();
+        return view('user_create',$data);
     }
 
     public function store()

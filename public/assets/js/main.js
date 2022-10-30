@@ -38,12 +38,20 @@ jQuery(document).ready(function($) {
 		event.preventDefault();
 		var id = $(this).attr('data-id');
 		var contactno = $(this).attr('data-contactno');
+		var club_id = $('#club').val();
+		if(club_id != ''){
+			$.ajax({url: "/sketcher/main/public/add_attendance?id="+id+"&club_id="+club_id, 
+					success: function(result) {
+						$('#mark_attendance').css('display', "none");
+						$('#remove_attendance').css('display', 'block');
+						$('#club_field').css('display', "none");
+						$('#error-club').css('display','none');
 
-		$.ajax({url: "/sketcher/main/public/add_attendance?id="+id, 
-				success: function(result) {
-					$('#mark_attendance').css('display', "none");
-					$('#remove_attendance').css('display', 'block');
-		}});
+			}});
+		}else{
+			$('#error-club').css('display','block');
+		}
+		
 	});
 	$('#remove_attendance').on('click', function(event) {
 		event.preventDefault();
@@ -55,6 +63,7 @@ jQuery(document).ready(function($) {
 					$('#mark_attendance').css('display', "block");
 
 					$('#remove_attendance').css('display', "none");
+					$('#club_field').css('display', "block");
 		}});
 	});
 	
